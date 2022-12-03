@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import test from "./slices/test";
+import base from "./slices/base";
 
 export const store = configureStore({
   reducer: {
-    test,
+    base,
   },
 });
