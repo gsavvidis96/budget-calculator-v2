@@ -24,7 +24,7 @@ const App = () => {
   useEffectOnce(() => {
     const prefersDarkModeLocalStorage = JSON.parse(
       localStorage.getItem("prefersDarkMode")!
-    ); //get prevered mode from local storage
+    ); //get prefered mode from local storage
 
     if (prefersDarkModeLocalStorage === null) {
       //if prefered mode is not set
@@ -35,7 +35,7 @@ const App = () => {
       dispatch(togglePrefersDarkMode({ prefersDarkMode: isSystemDarkMode })); //set theme mode without setting local storage.
     } else {
       dispatch(
-        togglePrefersDarkMode({ prefersDarkMode: prefersDarkModeLocalStorage })
+        togglePrefersDarkMode({ prefersDarkMode: prefersDarkModeLocalStorage }) //else set the mode from local storage
       );
     }
   });
@@ -46,7 +46,10 @@ const App = () => {
 
       <Stack sx={{ height: "100vh" }}>
         <Navbar />
-        <Outlet />
+
+        <Stack sx={{ flexGrow: 1, padding: "20px" }}>
+          <Outlet />
+        </Stack>
       </Stack>
     </ThemeProvider>
   );

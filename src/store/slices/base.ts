@@ -11,7 +11,7 @@ export const baseSlice = createSlice({
     togglePrefersDarkMode: (state, action) => {
       state.prefersDarkMode = action.payload.prefersDarkMode;
 
-      if (action.payload.saveToLocalStorage === true) {
+      if (action.payload.saveToLocalStorage) {
         localStorage.setItem(
           "prefersDarkMode",
           JSON.stringify(state.prefersDarkMode)

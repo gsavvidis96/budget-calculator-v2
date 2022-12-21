@@ -18,7 +18,7 @@ const Navbar = () => {
   );
 
   return (
-    <AppBar>
+    <AppBar position="static">
       <Toolbar>
         <Stack sx={{ flexGrow: 1 }} gap={1} direction="row">
           <Button color="inherit">About</Button>
