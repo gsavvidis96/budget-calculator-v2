@@ -1,17 +1,19 @@
 import { it, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "../tests/test-utils";
-import Navbar from "../components/Navbar";
+import { renderRouter, renderWithProviders } from "../test/test-utils";
+import { screen } from "@testing-library/react";
 
 it("true to be true", () => {
   const user = userEvent.setup();
-  renderWithProviders(<Navbar />, { router: true });
+  renderWithProviders(renderRouter({ initialEntries: ["/about"] }));
+
+  expect(screen.getByText(/xaxa/i)).toBeInTheDocument();
 
   expect(true).toBe(true);
 });
 
 it("false to be false", () => {
-  renderWithProviders(<Navbar />, { router: true });
+  renderWithProviders(renderRouter());
 
   expect(false).toBe(false);
 });

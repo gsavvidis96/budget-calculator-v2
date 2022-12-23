@@ -4,15 +4,14 @@ import type { RenderOptions } from "@testing-library/react";
 import type { PreloadedState } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { AppStore, RootState, setupStore } from "../store";
-import { RouterProvider } from "react-router-dom";
-import router from "../router";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import routes from "../router/routes";
 
 // This type interface extends the default options for render from RTL, as well
 // as allows the user to specify other things such as initialState, store.
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;
-  router?: Boolean;
 }
 
 export function renderWithProviders(
@@ -25,15 +24,16 @@ export function renderWithProviders(
   }: ExtendedRenderOptions = {}
 ) {
   function Wrapper({ children }: PropsWithChildren<{}>): ReactElement {
-    if (renderOptions.router) {
-      return (
-        <Provider store={store}>
-          <RouterProvider router={router} />
-        </Provider>
-      );
-    } else {
-      return <Provider store={store}>{children}</Provider>;
-    }
+    return <Provider store={store}>{children}</Provider>;
   }
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+}
+
+export function renderRouter(memoryRouterOpts?: {
+  initialEntries?: string[];
+  initialIndex?: number;
+}) {
+  return (
+    <RouterProvider router={createMemoryRouter(routes, memoryRouterOpts)} />
+  );
 }

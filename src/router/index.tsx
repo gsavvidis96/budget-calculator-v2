@@ -1,29 +1,4 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Login from "../views/Login";
-import About from "../views/About";
-import Home from "../views/Home";
+import { createBrowserRouter } from "react-router-dom";
+import routes from "./routes";
 
-export default createBrowserRouter([
-  {
-    element: <App />,
-    children: [
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "*",
-        element: <Navigate to="/" />,
-      },
-    ],
-  },
-]);
+export default createBrowserRouter(routes);
