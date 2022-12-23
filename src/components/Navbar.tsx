@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Box,
   Button,
   IconButton,
   Stack,
@@ -9,6 +10,7 @@ import {
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { togglePrefersDarkMode } from "../store/slices/base";
+import { Paid } from "@mui/icons-material";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -20,8 +22,25 @@ const Navbar = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Stack sx={{ flexGrow: 1 }} gap={1} direction="row">
+        <Stack
+          sx={{ flexGrow: 1, alignItems: "center" }}
+          gap={1}
+          direction="row"
+        >
+          <Stack
+            direction={"row"}
+            sx={{ mr: "auto", alignItems: "center" }}
+            gap={1}
+          >
+            <Paid fontSize="large" />
+
+            <Box sx={{ fontWeight: "600", fontSize: "18px" }}>
+              Budget Calculator
+            </Box>
+          </Stack>
+
           <Button color="inherit">About</Button>
+
           <Button color="inherit">Login</Button>
 
           <IconButton
