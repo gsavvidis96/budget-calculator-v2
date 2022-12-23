@@ -1,17 +1,15 @@
 import { createTheme, CssBaseline, Stack, ThemeProvider } from "@mui/material";
 import { useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router";
 import Navbar from "./components/Navbar";
 import { useEffectOnce } from "react-use";
 import { togglePrefersDarkMode } from "./store/slices/base";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const prefersDarkMode = useSelector(
-    (state: any) => state.base.prefersDarkMode
-  );
+  const prefersDarkMode = useAppSelector((state) => state.base.prefersDarkMode);
 
   const theme = useMemo(() => {
     return createTheme({

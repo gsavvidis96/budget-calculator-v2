@@ -8,16 +8,15 @@ import {
   useTheme,
 } from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
 import { togglePrefersDarkMode } from "../store/slices/base";
 import { Paid } from "@mui/icons-material";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
-  const dispatch = useDispatch();
-  const prefersDarkMode = useSelector(
-    (state: any) => state.base.prefersDarkMode
-  );
+  const dispatch = useAppDispatch();
+  const prefersDarkMode = useAppSelector((state) => state.base.prefersDarkMode);
 
   return (
     <AppBar position="static">
@@ -34,14 +33,27 @@ const Navbar = () => {
           >
             <Paid fontSize="large" />
 
-            <Box sx={{ fontWeight: "600", fontSize: "18px" }}>
+            <Box
+              component={Link}
+              to="/"
+              sx={{
+                color: "inherit",
+                textDecoration: "none",
+                fontWeight: "600",
+                fontSize: "18px",
+              }}
+            >
               Budget Calculator
             </Box>
           </Stack>
 
-          <Button color="inherit">About</Button>
+          <Button color="inherit" component={Link} to="/about">
+            About
+          </Button>
 
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" component={Link} to="/login">
+            Login
+          </Button>
 
           <IconButton
             color="inherit"
