@@ -1,10 +1,11 @@
-import { createTheme, CssBaseline, Stack, ThemeProvider } from "@mui/material";
+import { Container, CssBaseline, Stack, ThemeProvider } from "@mui/material";
 import { useMemo } from "react";
 import { Outlet } from "react-router";
 import Navbar from "./components/Navbar";
 import { useEffectOnce } from "react-use";
 import { togglePrefersDarkMode } from "./store/slices/base";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
+import createCustomTheme from "./theme";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -12,11 +13,7 @@ const App = () => {
   const prefersDarkMode = useAppSelector((state) => state.base.prefersDarkMode);
 
   const theme = useMemo(() => {
-    return createTheme({
-      palette: {
-        mode: prefersDarkMode ? "dark" : "light",
-      },
-    });
+    return createCustomTheme(prefersDarkMode);
   }, [prefersDarkMode]);
 
   useEffectOnce(() => {
@@ -45,9 +42,17 @@ const App = () => {
       <Stack sx={{ height: "100vh" }}>
         <Navbar />
 
-        <Stack sx={{ flexGrow: 1, padding: "20px" }}>
+        <Container
+          maxWidth="xl"
+          sx={{
+            flexGrow: 1,
+            padding: "20px",
+            display: "flex",
+            flexDirection: " column",
+          }}
+        >
           <Outlet />
-        </Stack>
+        </Container>
       </Stack>
     </ThemeProvider>
   );

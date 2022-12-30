@@ -1,9 +1,16 @@
-====== CURRENT SPRINT =====
-4) test mockup scenarios with redux and router
-5) test dark mode functionality
+====== FINISH UI ======
+finish new/edit budget page
+responsive design
 
-====== NEXT STEPS ======
-1) add supabase authentication
-2) test supabase authentication
-3) create basic dummy UI for budgets
-4) implement budgets db design
+============
+
+setup netlify pipeline
+add custom domain in netlify
+
+============
+
+supabase functionality
+
+============
+
+capacitor app

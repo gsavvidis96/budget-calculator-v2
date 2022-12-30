@@ -19,7 +19,15 @@ const Navbar = () => {
   const prefersDarkMode = useAppSelector((state) => state.base.prefersDarkMode);
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      color="inherit"
+      sx={{
+        boxShadow: "none",
+        borderBottom: "1px solid",
+        borderColor: "budgetCardBorder.main",
+      }}
+    >
       <Toolbar>
         <Stack
           sx={{ flexGrow: 1, alignItems: "center" }}
@@ -47,16 +55,14 @@ const Navbar = () => {
             </Box>
           </Stack>
 
-          <Button color="inherit" component={Link} to="/about">
-            About
-          </Button>
-
-          <Button color="inherit" component={Link} to="/login">
+          {/* <Button color="inherit" component={Link} to="/login">
             Login
-          </Button>
+          </Button> */}
+
+          <Button variant="outlined">Logout</Button>
 
           <IconButton
-            color="inherit"
+            color="primary"
             onClick={() =>
               dispatch(
                 togglePrefersDarkMode({
