@@ -59,7 +59,9 @@ const Navbar = () => {
             Login
           </Button> */}
 
-          <Button variant="outlined">Logout</Button>
+          <Button variant="contained" size="small">
+            Logout
+          </Button>
 
           <IconButton
             color="primary"

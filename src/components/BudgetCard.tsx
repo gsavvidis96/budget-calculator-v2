@@ -66,7 +66,10 @@ const BudgetCard = ({ name, balance, date, id }: Budget) => {
         </Stack>
       </Stack>
 
-      <IconButton color="error" size="small" sx={{ alignSelf: "start" }}>
+      <IconButton
+        size="small"
+        sx={{ alignSelf: "start", color: "error.light" }}
+      >
         <DeleteOutlineOutlined />
       </IconButton>
     </Stack>
